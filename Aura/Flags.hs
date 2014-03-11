@@ -51,7 +51,7 @@ import System.Console.GetOpt
 import Data.Maybe (fromMaybe)
 
 import Aura.Colour.Text (yellow)
-import Aura.Core.Settings.Base
+import Aura.Core.Settings
 import Aura.Languages
 
 import Utilities (notNull, split)

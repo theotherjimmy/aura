@@ -37,8 +37,8 @@ module Aura.Cache
 import qualified Data.Map.Lazy as M
 import Data.List (nub)
 
-import Aura.Settings.Base
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
+import Aura.Core.Settings
 import Aura.Utils (pkgFileNameAndVer)
 
 import Utilities (searchLines)

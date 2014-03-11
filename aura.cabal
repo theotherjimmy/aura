@@ -77,8 +77,8 @@ executable aura
                        Aura.Pkgbuild.Base,
                        Aura.Pkgbuild.Records,
                        Aura.Pkgbuild.Editing,
-                       Aura.Settings.Base,
-                       Aura.Settings.Enable,
+                       Aura.Core.Settings,
+                       Aura.Core.Settings.Enable,
                        Bash.Base,
                        Bash.Parser,
                        Bash.Simplify

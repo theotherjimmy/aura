@@ -30,11 +30,11 @@ import System.Directory (doesFileExist)
 import Text.Regex.PCRE  ((=~))
 import System.IO        (hFlush, stdout)
 
-import Aura.Settings.Base (pacmanCmdOf)
+import Aura.Core.Settings (pacmanCmdOf)
 import Aura.Languages     (pacmanFailure_1)
 import Aura.Shell         (shellCmd, quietShellCmd, quietShellCmd')
 import Aura.Utils         (scoldAndFail)
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
 import Aura.Cache
 
 import Shell (Environment, getEnvVar, didProcessSucceed)

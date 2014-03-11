@@ -27,7 +27,7 @@ import System.Directory (doesFileExist)
 import System.FilePath  ((</>))
 
 import Aura.Pkgbuild.Base
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
 import Aura.Core (Buildable, baseNameOf, pkgbuildOf)
 import Aura.Diff (unidiff)
 

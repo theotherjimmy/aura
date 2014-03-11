@@ -30,7 +30,7 @@ import Control.Monad   (when, void, join)
 import Control.Applicative ((<*>), pure)
 
 import Aura.Pacman (pacman)
-import Aura.Settings.Base
+import Aura.Core.Settings
 import Aura.Colour.Text
 import Aura.Monad.Aura
 import Aura.Languages

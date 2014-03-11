@@ -2,10 +2,10 @@ module Aura.Settings.SettingsTest
     ( sampleSettings
     , runAura ) where
 
-import Aura.Settings.Base
+import Aura.Core.Monad.Aura (runAura)
+import Aura.Core.Settings
 import Aura.Colour.Text
 import Aura.Languages
-import Aura.Monad.Aura (runAura)
 
 ---
 

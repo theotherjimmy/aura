@@ -31,15 +31,15 @@ module Aura.Install
 
 import Control.Monad (unless, (>=>))
 import Data.Either   (partitionEithers)
-import Data.List     (sort, (\\), intersperse)
 import Data.Maybe    (catMaybes)
+import Data.List     (sort, (\\), intersperse)
 
-import Aura.Pkgbuild.Base
 import Aura.Pkgbuild.Records
-import Aura.Settings.Base
+import Aura.Pkgbuild.Base
+import Aura.Core.Monad.Aura
+import Aura.Core.Settings
 import Aura.Dependencies
 import Aura.Colour.Text
-import Aura.Monad.Aura
 import Aura.Languages
 import Aura.Pacman
 import Aura.Build

@@ -23,8 +23,8 @@ module Aura.Conflicts where
 
 import Text.Regex.PCRE ((=~))
 
-import Aura.Settings.Base
-import Aura.Monad.Aura
+import Aura.Core.Settings
+import Aura.Core.Monad.Aura
 import Aura.Languages
 import Aura.Utils
 import Aura.Core

@@ -25,7 +25,7 @@ import Control.Monad ((>=>))
 
 import Aura.Bash
 import Aura.Core
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
 import Aura.Pkgbuild.Editing
 
 ---

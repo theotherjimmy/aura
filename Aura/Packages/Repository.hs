@@ -25,7 +25,7 @@ import Data.Maybe
 import Text.Regex.PCRE ((=~))
 
 import Aura.Core
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
 import Aura.Pacman     (pacmanOutput)
 
 import Utilities       (tripleThrd, findM)

@@ -33,7 +33,7 @@ import Aura.Colour.Text (yellow)
 import Aura.Core        (badReport)
 import Aura.Shell       (shellCmd)
 import Aura.Utils       (entrify)
-import Aura.Settings.Base
+import Aura.Core.Settings
 import Aura.Monad.Aura
 import Aura.Languages
 

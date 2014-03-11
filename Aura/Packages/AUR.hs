@@ -41,10 +41,10 @@ import qualified Data.Traversable    as Traversable (mapM)
 import           Text.JSON
 
 import           Aura.Utils          (scoldAndFail)
-import           Aura.Monad.Aura
-import           Aura.Languages
+import           Aura.Core.Monad.Aura
 import           Aura.Pkgbuild.Base
-import           Aura.Settings.Base
+import           Aura.Core.Settings
+import           Aura.Languages
 import           Aura.Core
 
 import           Utilities           (decompress)

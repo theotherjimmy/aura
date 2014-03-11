@@ -40,7 +40,7 @@ import           Aura.Install (InstallOptions(..))
 import qualified Aura.Install as I
 
 import Aura.Pkgbuild.Base
-import Aura.Settings.Base
+import Aura.Core.Settings
 import Aura.Packages.ABS (absDepsRepo)
 import Aura.Packages.AUR
 import Aura.Colour.Text

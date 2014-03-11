@@ -84,6 +84,7 @@ data Version = Version { unitsOf    :: [Unit]
                        , revisionOf :: Maybe Int }  -- The number after `-`.
                deriving (Eq,Show,Ord)
 
+-- TODO: Hide this type from the export?
 data Unit = IUnit Int | SUnit String deriving (Eq,Show,Ord)
 
 -- TODO: Change these to hold `Version`s?

@@ -29,7 +29,7 @@ import Data.Maybe         (fromMaybe)
 
 import Aura.Languages (Language,langFromEnv)
 import Aura.MakePkg   (makepkgConfFile)
-import Aura.Core.Settings.Base
+import Aura.Core.Settings
 import Aura.Pacman
 import Aura.Flags
 

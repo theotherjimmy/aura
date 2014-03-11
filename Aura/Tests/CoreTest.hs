@@ -1,5 +1,5 @@
 import Aura.Settings.SettingsTest
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
 import Aura.Core
 
 ---

@@ -30,9 +30,9 @@ import Data.Char                 (isDigit)
 import Data.List                 (sortBy,intercalate)
 
 import Aura.Languages (Language,whitespace)
-import Aura.Settings.Base
+import Aura.Core.Monad.Aura
+import Aura.Core.Settings
 import Aura.Colour.Text
-import Aura.Monad.Aura
 
 import Utilities (inDir,postPad)
 import Shell     (pwd)

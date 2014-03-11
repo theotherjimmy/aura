@@ -27,9 +27,10 @@ import Control.Monad    (when)
 import Data.Either      (partitionEithers)
 import Data.List        (isSuffixOf)
 
-import Aura.Settings.Base
+import Aura.Core.Monad.Aura
+import Aura.Core.Settings
+import Aura.Core.Types
 import Aura.Colour.Text
-import Aura.Monad.Aura
 import Aura.Languages
 import Aura.Pacman
 import Aura.Utils

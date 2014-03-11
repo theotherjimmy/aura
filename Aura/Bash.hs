@@ -29,8 +29,8 @@ module Aura.Bash
 import Text.Parsec.Error (ParseError)
 import Data.Maybe    (fromMaybe)
 
-import Aura.Settings.Base
-import Aura.Monad.Aura
+import Aura.Core.Monad.Aura
+import Aura.Core.Settings
 
 import Bash.Simplify
 import Bash.Parser
