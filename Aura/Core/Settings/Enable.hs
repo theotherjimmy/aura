@@ -19,7 +19,7 @@ along with Aura.  If not, see <http://www.gnu.org/licenses/>.
 
 -}
 
-module Aura.Settings.Enable
+module Aura.Core.Settings.Enable
     ( getSettings
     , debugOutput ) where
 
@@ -29,7 +29,7 @@ import Data.Maybe         (fromMaybe)
 
 import Aura.Languages (Language,langFromEnv)
 import Aura.MakePkg   (makepkgConfFile)
-import Aura.Settings.Base
+import Aura.Core.Settings.Base
 import Aura.Pacman
 import Aura.Flags
 

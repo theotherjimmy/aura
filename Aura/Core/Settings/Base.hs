@@ -19,9 +19,9 @@ along with Aura.  If not, see <http://www.gnu.org/licenses/>.
 
 -}
 
-module Aura.Settings.Base ( Settings(..)
-                          , SortScheme(..)
-                          , Truncation(..) ) where
+module Aura.Core.Settings.Base ( Settings(..)
+                               , SortScheme(..)
+                               , Truncation(..) ) where
 
 import Aura.Languages (Language)
 

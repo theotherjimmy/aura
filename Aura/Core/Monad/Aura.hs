@@ -39,7 +39,7 @@ import Control.Monad.Reader
 import Control.Monad.Error
 import Control.Applicative
 
-import Aura.Settings.Base (Settings)
+import Aura.Core.Settings.Base (Settings)
 
 ---
 
