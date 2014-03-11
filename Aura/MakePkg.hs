@@ -31,7 +31,7 @@ import Text.Regex.PCRE ((=~))
 import Aura.Core.Settings (suppressMakepkg,makepkgFlagsOf)
 import Aura.Shell         (shellCmd, quietShellCmd, quietShellCmd', checkExitCode')
 
-import Aura.Core.Monad.Aura
+import Aura.Core.Monad
 
 import Shell (pwd, ls)
 

@@ -29,7 +29,7 @@ import Data.Char       (isDigit)
 
 import Aura.Utils (scoldAndFail,optionalPrompt)
 import Aura.Core  (warn)
-import Aura.Monad.Aura
+import Aura.Core.Monad
 import Aura.Languages
 import Aura.State
 

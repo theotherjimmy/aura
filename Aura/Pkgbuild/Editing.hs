@@ -28,8 +28,9 @@ module Aura.Pkgbuild.Editing
 import System.FilePath ((</>))
 import Control.Monad   (void)
 
-import Aura.Core.Monad.Aura
 import Aura.Core.Settings
+import Aura.Core.Monad
+import Aura.Core.Types
 import Aura.Languages
 import Aura.Utils
 import Aura.Core

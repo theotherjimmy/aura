@@ -23,10 +23,11 @@ module Aura.Pkgbuild.Base where
 
 import Control.Monad ((>=>))
 
-import Aura.Bash
-import Aura.Core
-import Aura.Core.Monad.Aura
 import Aura.Pkgbuild.Editing
+import Aura.Core.Monad
+import Aura.Core.Types
+import Aura.Core
+import Aura.Bash
 
 ---
 

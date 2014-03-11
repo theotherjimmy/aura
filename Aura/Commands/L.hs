@@ -34,7 +34,7 @@ import Aura.Core        (badReport)
 import Aura.Shell       (shellCmd)
 import Aura.Utils       (entrify)
 import Aura.Core.Settings
-import Aura.Monad.Aura
+import Aura.Core.Monad
 import Aura.Languages
 
 import Utilities (searchLines,readFileUTF8)

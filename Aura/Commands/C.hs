@@ -38,7 +38,7 @@ import Data.Char          (isDigit)
 import Aura.Logo   (raiseCursorBy)
 import Aura.Pacman (pacman)
 import Aura.Core.Settings
-import Aura.Monad.Aura
+import Aura.Core.Monad
 import Aura.Languages
 import Aura.Cache
 import Aura.State

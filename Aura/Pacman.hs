@@ -34,7 +34,7 @@ import Aura.Core.Settings (pacmanCmdOf)
 import Aura.Languages     (pacmanFailure_1)
 import Aura.Shell         (shellCmd, quietShellCmd, quietShellCmd')
 import Aura.Utils         (scoldAndFail)
-import Aura.Core.Monad.Aura
+import Aura.Core.Monad
 import Aura.Cache
 
 import Shell (Environment, getEnvVar, didProcessSucceed)

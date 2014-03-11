@@ -21,7 +21,7 @@ along with Aura.  If not, see <http://www.gnu.org/licenses/>.
 
 -}
 
-module Aura.Core.Monad.Aura
+module Aura.Core.Monad
     ( Aura
     , AuraError
     , runAura

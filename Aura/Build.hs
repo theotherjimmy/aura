@@ -7,7 +7,7 @@ This file is part of Aura.
 Aura is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+n(at your option) any later version.
 
 Aura is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -31,8 +31,9 @@ import Control.Applicative ((<*>), pure)
 
 import Aura.Pacman (pacman)
 import Aura.Core.Settings
+import Aura.Core.Monad
+import Aura.Core.Types
 import Aura.Colour.Text
-import Aura.Monad.Aura
 import Aura.Languages
 import Aura.MakePkg
 import Aura.Utils

@@ -24,8 +24,9 @@ module Aura.Packages.Repository ( pacmanRepo ) where
 import Data.Maybe
 import Text.Regex.PCRE ((=~))
 
+import Aura.Core.Monad
+import Aura.Core.Types
 import Aura.Core
-import Aura.Core.Monad.Aura
 import Aura.Pacman     (pacmanOutput)
 
 import Utilities       (tripleThrd, findM)

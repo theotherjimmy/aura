@@ -36,8 +36,8 @@ import Data.List     (sort, (\\), intersperse)
 
 import Aura.Pkgbuild.Records
 import Aura.Pkgbuild.Base
-import Aura.Core.Monad.Aura
 import Aura.Core.Settings
+import Aura.Core.Monad
 import Aura.Dependencies
 import Aura.Colour.Text
 import Aura.Languages

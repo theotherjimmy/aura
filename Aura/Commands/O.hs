@@ -27,7 +27,7 @@ module Aura.Commands.O
 
 import Aura.Core   (orphans, sudo)
 import Aura.Pacman (pacman)
-import Aura.Monad.Aura
+import Aura.Core.Monad
 
 ---
 

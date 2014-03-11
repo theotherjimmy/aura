@@ -53,9 +53,9 @@ import qualified Aura.Shell         as A (quietShellCmd, shellCmd)
 import           Aura.Packages.Repository (pacmanRepo)
 import           Aura.Pacman        (pacmanOutput)
 import           Aura.Utils         (optionalPrompt)
-import           Aura.Core.Monad.Aura
-import           Aura.Core.Settings
 import           Aura.Pkgbuild.Base
+import           Aura.Core.Settings
+import           Aura.Core.Monad
 import           Aura.Languages
 import           Aura.Core
 import           Aura.Bash

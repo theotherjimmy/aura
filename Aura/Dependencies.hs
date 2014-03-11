@@ -28,8 +28,9 @@ import           Control.Monad.State
 import           Data.Graph
 import           Data.Maybe
 
-import           Aura.Core.Monad.Aura
 import           Aura.Core.Settings
+import           Aura.Core.Monad
+import           Aura.Core.Types
 import           Aura.Languages
 import           Aura.Conflicts
 import           Aura.Core

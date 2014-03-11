@@ -61,8 +61,8 @@ import Data.Maybe       (catMaybes)
 import           Aura.Install (InstallOptions(..))
 import qualified Aura.Install as I
 
-import Aura.Core.Monad.Aura
 import Aura.Core.Settings
+import Aura.Core.Monad
 import Aura.Packages.ABS
 import Aura.Colour.Text
 import Aura.Languages

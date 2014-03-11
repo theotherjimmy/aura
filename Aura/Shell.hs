@@ -30,7 +30,7 @@ module Aura.Shell
 
 import System.Exit (ExitCode)
 
-import Aura.Core.Monad.Aura
+import Aura.Core.Monad
 
 import Utilities (tripleSnd)
 

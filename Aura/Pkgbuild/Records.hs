@@ -26,10 +26,10 @@ module Aura.Pkgbuild.Records where
 import System.Directory (doesFileExist)
 import System.FilePath  ((</>))
 
-import Aura.Pkgbuild.Base
-import Aura.Core.Monad.Aura
-import Aura.Core (Buildable, baseNameOf, pkgbuildOf)
 import Aura.Diff (unidiff)
+import Aura.Pkgbuild.Base
+import Aura.Core.Monad
+import Aura.Core.Types
 
 import Utilities (readFileUTF8)
 

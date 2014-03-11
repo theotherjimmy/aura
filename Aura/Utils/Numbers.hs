@@ -25,8 +25,10 @@ module Aura.Utils.Numbers
     ( Version(..)
     , parseVersion ) where
 
-import Text.ParserCombinators.Parsec
 import Control.Applicative (pure, (<*),(*>),(<*>),(<$>),(<$))
+import Text.ParserCombinators.Parsec
+
+import Aura.Core.Types
 
 import Utilities (eitherToMaybe, crunchInt)
 

@@ -41,8 +41,8 @@ import Aura.Colour.Text (cyan, red)
 import Aura.Pacman      (pacmanOutput, pacman)
 import Aura.Utils       (comparableVer,printList)
 import Aura.Core        (warn,notify)
-import Aura.Core.Monad.Aura
 import Aura.Core.Settings
+import Aura.Core.Monad
 import Aura.Languages
 import Aura.Cache
 import Aura.Time
