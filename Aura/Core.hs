@@ -25,7 +25,6 @@ import System.Directory (doesFileExist)
 import Text.Regex.PCRE  ((=~))
 import Control.Monad    (when)
 import Data.Either      (partitionEithers)
-import Data.Monoid      (Monoid(..))
 import Data.List        (isSuffixOf)
 
 import Aura.Settings.Base
@@ -39,64 +38,6 @@ import Utilities
 import Shell
 
 ---
-
---------
--- TYPES
---------
-type Error    = String
-type Pkgbuild = String
-
-data VersionDemand = LessThan String
-                   | AtLeast String
-                   | MoreThan String
-                   | MustBe String
-                   | Anything
-                     deriving (Eq)
-
-instance Show VersionDemand where
-    show (LessThan v) = '<' : v
-    show (AtLeast v)  = ">=" ++ v
-    show (MoreThan v) = '>' : v
-    show (MustBe  v)  = '=' : v
-    show Anything     = ""
-
--- | A package to be installed.
-data Package = Package { pkgNameOf        :: String
-                       , pkgVersionOf     :: String
-                       , pkgDepsOf        :: [Dep]
-                       , pkgInstallTypeOf :: InstallType }
-
--- | A dependency on another package.
-data Dep = Dep { depNameOf      :: String
-               , depVerDemandOf :: VersionDemand }
-
--- | The installation method.
-data InstallType = Pacman String | Build Buildable
-
--- | A package to be built manually before installing.
-data Buildable = Buildable
-    { baseNameOf   :: String
-    , pkgbuildOf   :: Pkgbuild
-    -- | Did the user select this package, or is it being built as a dep?
-    , isExplicit   :: Bool
-    -- | Fetch and extract the source code corresponding to the given package.
-    , buildScripts :: FilePath     -- ^ Directory in which to place the scripts.
-                   -> IO FilePath  -- ^ Path to the extracted scripts.
-    }
-
--- | A 'Repository' is a place where packages may be fetched from. Multiple
--- repositories can be combined with the 'Data.Monoid' instance.
-newtype Repository = Repository
-    { repoLookup :: String -> Aura (Maybe Package) }
-
-instance Monoid Repository where
-    mempty = Repository $ \_ -> return Nothing
-
-    a `mappend` b = Repository $ \s -> do
-        mpkg <- repoLookup a s
-        case mpkg of
-            Nothing -> repoLookup b s
-            _       -> return mpkg
 
 ---------------------------------
 -- Functions common to `Package`s

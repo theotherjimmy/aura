@@ -32,13 +32,6 @@ import Utilities (eitherToMaybe, crunchInt)
 
 ---
 
--- TODO: Move this to a unified `Types` file?
-data Version = Version { unitsOf    :: [Unit]
-                       , revisionOf :: Maybe Int }  -- The number after `-`.
-               deriving (Eq,Show,Ord)
-
-data Unit = IUnit Int | SUnit String deriving (Eq,Show,Ord)
-
 parseVersion :: String -> Maybe Version
 parseVersion = eitherToMaybe . parse version ""
 
