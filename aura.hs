@@ -38,9 +38,9 @@ import Data.List          (nub, sort, intercalate)
 
 import Aura.Colour.Text (yellow)
 import Aura.Shell       (shellCmd)
-import Aura.Settings.Enable
-import Aura.Settings.Base
-import Aura.Monad.Aura
+import Aura.Core.Settings.Enable
+import Aura.Core.Settings
+import Aura.Core.Monad
 import Aura.Languages
 import Aura.Pacman
 import Aura.Flags

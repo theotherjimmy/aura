@@ -19,23 +19,23 @@ along with Aura.  If not, see <http://www.gnu.org/licenses/>.
 
 -}
 
-module Aura.Packages.Repository ( pacmanRepo ) where
+module Aura.Packages.Official ( officialRepo ) where
 
 import Data.Maybe
 import Text.Regex.PCRE ((=~))
 
+import Aura.Pacman     (pacmanOutput)
 import Aura.Core.Monad
 import Aura.Core.Types
 import Aura.Core
-import Aura.Pacman     (pacmanOutput)
 
 import Utilities       (tripleThrd, findM)
 
 ---
 
 -- | Repository package source.
-pacmanRepo :: Repository
-pacmanRepo = Repository $ \name -> do
+officialRepo :: Repository
+officialRepo = Repository $ \name -> do
     real <- resolveName name
     fmap (packageRepo real) <$> mostRecentVersion real
 

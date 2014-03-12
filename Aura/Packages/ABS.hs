@@ -50,7 +50,7 @@ import           Data.Set           (Set)
 import           Control.Monad
 
 import qualified Aura.Shell         as A (quietShellCmd, shellCmd)
-import           Aura.Packages.Repository (pacmanRepo)
+import           Aura.Packages.Official (pacmanRepo)
 import           Aura.Pacman        (pacmanOutput)
 import           Aura.Utils         (optionalPrompt)
 import           Aura.Pkgbuild.Base
