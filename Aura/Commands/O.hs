@@ -32,7 +32,7 @@ import Aura.Core.Monad
 ---
 
 displayOrphans :: [String] -> Aura ()
-displayOrphans []   = orphans >>= liftIO . mapM_ putStrLn
+displayOrphans []   = liftIO orphans >>= liftIO . mapM_ putStrLn
 displayOrphans pkgs = adoptPkg pkgs
 
 adoptPkg :: [String] -> Aura ()

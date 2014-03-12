@@ -48,18 +48,21 @@ packageRepo name version = Package
 
 -- | If given a virtual package, try to find a real package to install.
 -- Functions like this are why we need libalpm.
-resolveName :: String -> Aura String
+-- TODO: lines <$> pacmanOutput ... -> providers :: IO [String]
+-- The function `resolveName` doesn't need to know _how_ providers are found.
+resolveName :: String -> IO String
 resolveName name =
   lines <$> pacmanOutput ["-Ssq", "^" ++ name ++ "$"] >>= chooseProvider name
 
 -- | Choose a providing package, favoring installed packages.
-chooseProvider :: String -> [String] -> Aura String
+chooseProvider :: String -> [String] -> IO String
 chooseProvider name []  = return name
 chooseProvider _    [p] = return p
 chooseProvider _    ps  = fromMaybe (head ps) <$> findM isInstalled ps
 
 -- | The most recent version of a package, if it exists in the respositories.
-mostRecentVersion :: String -> Aura (Maybe String)
+-- TODO: This should not be here.
+mostRecentVersion :: String -> IO (Maybe String)
 mostRecentVersion s = extractVersion <$> pacmanOutput ["-Si", s]
 
 -- | Takes `pacman -Si` output as input.

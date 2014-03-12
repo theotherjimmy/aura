@@ -59,12 +59,13 @@ checkdepends = flip value "checkdepends"
 pbCustomization :: Buildable -> Aura Buildable
 pbCustomization = foldl (>=>) return [customizepkg,hotEdit]
 
+-- TODO: Why is this here?
 -- | Package a Buildable, running the customization handler first.
 packageBuildable :: Buildable -> Aura Package
 packageBuildable b = do
-    b' <- pbCustomization b
-    ns <- namespace (baseNameOf b') (pkgbuildOf b')
-    return Package
+    b' <- pbCustomization b  -- Does this have to be here?
+    ns <- namespace (baseNameOf b') (pkgbuildOf b')  -- Can this be brought out
+    return Package                                   -- of the Aura Monad?
         { pkgNameOf        = baseNameOf b'
         , pkgVersionOf     = trueVersion ns
         , pkgDepsOf        = map parseDep $ concatMap ($ ns)

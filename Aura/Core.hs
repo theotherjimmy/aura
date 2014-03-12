@@ -75,14 +75,14 @@ trueRoot action = ask >>= \ss ->
        if okay then action else notify trueRoot_2
 
 -- `-Qm` yields a list of sorted values.
-foreignPackages :: Aura [(String,String)]
+foreignPackages :: IO [(String,String)]
 foreignPackages = (map fixName . lines) <$> pacmanOutput ["-Qm"]
     where fixName = hardBreak (== ' ')
 
-orphans :: Aura [String]
+orphans :: IO [String]
 orphans = lines <$> pacmanOutput ["-Qqdt"]
 
-develPkgs :: Aura [String]
+develPkgs :: IO [String]
 develPkgs = (filter isDevelPkg . map fst) <$> foreignPackages
 
 isDevelPkg :: String -> Bool
@@ -95,7 +95,8 @@ isDevelPkg p = any (`isSuffixOf` p) suffixes
 isIgnored :: String -> [String] -> Bool
 isIgnored pkg toIgnore = pkg `elem` toIgnore
 
-isInstalled :: String -> Aura Bool
+-- TODO: This shouldn't be here.
+isInstalled :: String -> IO Bool
 isInstalled pkg = pacmanSuccess ["-Qq",pkg]
 
 removePkgs :: [String] -> [String] -> Aura ()
@@ -104,7 +105,7 @@ removePkgs pkgs pacOpts = pacman  $ ["-Rsu"] ++ pkgs ++ pacOpts
 
 -- Moving to a libalpm backend will make this less hacked.
 -- | True if a dependency is satisfied by an installed package.
-isSatisfied :: Dep -> Aura Bool
+isSatisfied :: Dep -> IO Bool
 isSatisfied (Dep name ver) = null <$> pacmanOutput ["-T", name ++ show ver]
 
 -- | Block further action until the database is free.

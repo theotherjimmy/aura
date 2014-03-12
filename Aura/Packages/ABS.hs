@@ -40,29 +40,30 @@ module Aura.Packages.ABS
     , absSearchLookup
     ) where
 
-import qualified Data.Set           as Set
-import qualified Data.Traversable   as Traversable
-import           System.Directory   (doesFileExist, doesDirectoryExist)
-import           System.FilePath    ((</>), takeBaseName)
-import           Text.Regex.PCRE    ((=~))
-import           Data.List          (find)
-import           Data.Set           (Set)
+import qualified Data.Traversable as Traversable
+import qualified Data.Set         as Set
+import           System.Directory (doesFileExist, doesDirectoryExist)
+import           System.FilePath  ((</>), takeBaseName)
+import           Text.Regex.PCRE  ((=~))
+import           Data.List        (find)
+import           Data.Set         (Set)
 import           Control.Monad
 
-import qualified Aura.Shell         as A (quietShellCmd, shellCmd)
-import           Aura.Packages.Official (pacmanRepo)
-import           Aura.Pacman        (pacmanOutput)
-import           Aura.Utils         (optionalPrompt)
+import qualified Aura.Shell       as A (quietShellCmd, shellCmd)
+import           Aura.Packages.Official (officialRepo)
+import           Aura.Pacman      (pacmanOutput)
+import           Aura.Utils       (optionalPrompt)
 import           Aura.Pkgbuild.Base
 import           Aura.Core.Settings
 import           Aura.Core.Monad
+import           Aura.Core.Types
 import           Aura.Languages
 import           Aura.Core
 import           Aura.Bash
 
-import qualified Shell              as Sh (quietShellCmd)
-import           Utilities          (readFileUTF8, whenM)
-import           Shell              (ls', ls'')
+import qualified Shell            as Sh (quietShellCmd)
+import           Utilities        (readFileUTF8, whenM)
+import           Shell            (ls', ls'')
 
 ---
 
@@ -81,7 +82,7 @@ absRepo = Repository $ \name ->
 
 absDepsRepo :: Aura Repository
 absDepsRepo = asks (getRepo . buildABSDeps)
-  where getRepo manual = if manual then absRepo else pacmanRepo
+  where getRepo manual = if manual then absRepo else officialRepo
 
 makeBuildable :: String -> String -> Aura Buildable
 makeBuildable repo name = do

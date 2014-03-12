@@ -30,15 +30,16 @@ import System.Directory (doesFileExist)
 import Text.Regex.PCRE  ((=~))
 import System.IO        (hFlush, stdout)
 
+import qualified Aura.Shell as AS (shellCmd)
 import Aura.Core.Settings (pacmanCmdOf)
 import Aura.Languages     (pacmanFailure_1)
-import Aura.Shell         (shellCmd, quietShellCmd, quietShellCmd')
+
 import Aura.Utils         (scoldAndFail)
 import Aura.Core.Monad
 import Aura.Cache
 
-import Shell (Environment, getEnvVar, didProcessSucceed)
 import Utilities 
+import Shell
 
 ---
 
@@ -97,11 +98,11 @@ getLogFilePath confFile = singleEntry confFile "LogFile" defaultLogFile
 -- ACTIONS
 ----------
 pacman :: [ShellArg] -> Aura ()
-pacman args = asks pacmanCmdOf >>= \cmd -> flush >> shellCmd cmd args
+pacman args = asks pacmanCmdOf >>= \cmd -> flush >> AS.shellCmd cmd args
     where flush = liftIO (hFlush stdout)
 
 -- Did a pacman process succeed?
-pacmanSuccess :: [ShellArg] -> Aura Bool
+pacmanSuccess :: [ShellArg] -> IO Bool
 pacmanSuccess args = success <$> quietShellCmd' "pacman" args
     where success = didProcessSucceed . tripleFst
 
@@ -110,17 +111,18 @@ pacmanFailure :: String -> Aura a
 pacmanFailure _ = scoldAndFail pacmanFailure_1
 
 -- Performs a pacmanQuiet and returns only the stdout.
-pacmanOutput :: [ShellArg] -> Aura String
+-- TODO: This should probably be `IO`
+pacmanOutput :: [ShellArg] -> IO String
 pacmanOutput args = quietShellCmd "pacman" args
 
 syncDatabase :: [ShellArg] -> Aura ()
 syncDatabase pacOpts = pacman $ ["-Sy"] ++ pacOpts
 
-getPacmanHelpMsg :: Aura [String]
+getPacmanHelpMsg :: IO [String]
 getPacmanHelpMsg = lines <$> pacmanOutput ["-h"]
 
 -- Yields the lines given by `pacman -V` with the pacman image stripped.
-getVersionInfo :: Aura [String]
+getVersionInfo :: IO [String]
 getVersionInfo = (map (drop verMsgPad) . lines) <$> pacmanOutput ["-V"]
 
 -- The amount of whitespace before text in the lines given by `pacman -V`
