@@ -41,7 +41,7 @@ version :: Parser Version
 version = Version <$> units <*> optionMaybe revision
 
 units :: Parser [Unit]
-units = concat <$> (many1 (iunit <|> sunit) `sepBy` char '.')
+units = concat <$> (many1 (iunit <|> sunit) `sepBy` oneOf ":.")
 
 iunit :: Parser Unit
 iunit = IUnit . crunchInt <$> many1 digit
