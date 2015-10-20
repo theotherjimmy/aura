@@ -75,37 +75,37 @@ replace' somethingElse = return somethingElse
 
 replaceStr :: BashString -> State Namespace BashString
 replaceStr s@(SingleQ _) = return s
-replaceStr (DoubleQ s)   = expandStr s >>= \strs -> return $ DoubleQ $ map Right strs
-replaceStr (NoQuote s)   = expandStr s >>= \strs -> return $ NoQuote $ map Right strs
+replaceStr (DoubleQ s)   = expandStr s >>= (pure . DoubleQ . map Right)
+replaceStr (NoQuote s)   = expandStr s >>= (pure . DoubleQ . map Right)
 replaceStr (Backtic f)   = Backtic `fmap` replace' f
 
 expandStr :: [Either BashExpansion String] -> State Namespace [String]
-expandStr [] = return []
+expandStr [] = pure []
 expandStr (x:xs) = do
   lhs <- expandStr' x
   rhs <- expandStr xs
   return $ lhs ++ rhs
 
 expandStr' :: Either BashExpansion String -> State Namespace [String]
-expandStr' (Right s) = return [s]
+expandStr' (Right s) = pure [s]
 expandStr' (Left (BashExpansion var sub)) = mapM expandWrapper sub >>= (getIndexedString var . fold)
 
 getIndexedString :: String -> String -> State Namespace [String]
 getIndexedString var idx  = get >>= \ns -> case  M.lookup var ns  of
-  Nothing -> return []
+  Nothing -> pure []
   Just bstrs -> getIndexedString' bstrs idx
 
 getIndexedString' :: [BashString] -> String -> State Namespace [String]
-getIndexedString' bstrs ""  = (replaceStr $ head bstrs) >>= (return . fromBashString)
-getIndexedString' bstrs "*" = mapM replaceStr bstrs >>= (return . concatMap fromBashString)
-getIndexedString' bstrs "@" = mapM replaceStr bstrs >>= (return . concatMap fromBashString)
-getIndexedString' bstrs num = (replaceStr $ bstrs !! read num) >>= (return . fromBashString)
+getIndexedString' bstrs ""  = (replaceStr $ head bstrs) >>= (pure . fromBashString)
+getIndexedString' bstrs "*" = mapM replaceStr bstrs >>= (pure . concatMap fromBashString)
+getIndexedString' bstrs "@" = mapM replaceStr bstrs >>= (pure . concatMap fromBashString)
+getIndexedString' bstrs num = (replaceStr $ bstrs !! read num) >>= (pure . fromBashString)
 
 expandWrapper :: BashString -> State Namespace String
-expandWrapper (SingleQ s) = return s
-expandWrapper (DoubleQ s) = expandStr s >>= (return . fold)
-expandWrapper (NoQuote s) = expandStr s >>= (return . fold)
-expandWrapper (Backtic f) = replace' f >>= (return . unwords . fromCommand)
+expandWrapper (SingleQ s) = pure s
+expandWrapper (DoubleQ s) = expandStr s >>= (pure . fold)
+expandWrapper (NoQuote s) = expandStr s >>= (pure . fold)
+expandWrapper (Backtic f) = replace' f >>= (pure . unwords . fromCommand)
 
 -- | An `if` statement can have an [el]if or [el]se, but it might not.
 replaceIf :: BashIf -> State Namespace [Field]
