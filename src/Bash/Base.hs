@@ -79,7 +79,7 @@ toNamespace (_:fs) = toNamespace fs
 getVar :: Namespace -> String -> Maybe [String]
 getVar ns s = case M.lookup s ns of
   Nothing -> Nothing
-  Just bs -> Just $ foldr (++) [] $ map fromBashString bs
+  Just bs -> Just $ concatMap fromBashString bs
 
 fromBashString :: BashString -> [String]
 fromBashString (SingleQ s) = [s]
@@ -88,5 +88,5 @@ fromBashString (NoQuote l) = rights l
 fromBashString (Backtic c) = ['`' : unwords (fromCommand c) ++ "`"]
 
 fromCommand :: Field -> [String]
-fromCommand (Command c as) =  [c] ++ foldr (++) [] (map fromBashString as)
+fromCommand (Command c as) =  c : concatMap fromBashString as
 fromCommand _ = error "Argument given was not a Command."
