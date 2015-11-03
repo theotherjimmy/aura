@@ -75,8 +75,8 @@ replace' somethingElse = return somethingElse
 
 replaceStr :: BashString -> State Namespace BashString
 replaceStr s@(SingleQ _) = return s
-replaceStr (DoubleQ s)   = expandStr s >>= (pure . DoubleQ . map Right)
-replaceStr (NoQuote s)   = expandStr s >>= (pure . DoubleQ . map Right)
+replaceStr (DoubleQ s)   = DoubleQ . map Right <$> expandStr s
+replaceStr (NoQuote s)   = DoubleQ . map Right <$> expandStr s
 replaceStr (Backtic f)   = Backtic `fmap` replace' f
 
 expandStr :: [Either BashExpansion String] -> State Namespace [String]
@@ -96,16 +96,16 @@ getIndexedString var idx  = get >>= \ns -> case  M.lookup var ns  of
   Just bstrs -> getIndexedString' bstrs idx
 
 getIndexedString' :: [BashString] -> String -> State Namespace [String]
-getIndexedString' bstrs ""  = (replaceStr $ head bstrs) >>= (pure . fromBashString)
-getIndexedString' bstrs "*" = mapM replaceStr bstrs >>= (pure . concatMap fromBashString)
-getIndexedString' bstrs "@" = mapM replaceStr bstrs >>= (pure . concatMap fromBashString)
-getIndexedString' bstrs num = (replaceStr $ bstrs !! read num) >>= (pure . fromBashString)
+getIndexedString' bstrs ""  = fromBashString <$> (replaceStr $ head bstrs)
+getIndexedString' bstrs "*" = concatMap fromBashString <$> mapM replaceStr bstrs
+getIndexedString' bstrs "@" = concatMap fromBashString <$> mapM replaceStr bstrs
+getIndexedString' bstrs num = fromBashString <$> (replaceStr $ bstrs !! read num)
 
 expandWrapper :: BashString -> State Namespace String
 expandWrapper (SingleQ s) = pure s
-expandWrapper (DoubleQ s) = expandStr s >>= (pure . fold)
-expandWrapper (NoQuote s) = expandStr s >>= (pure . fold)
-expandWrapper (Backtic f) = replace' f >>= (pure . unwords . fromCommand)
+expandWrapper (DoubleQ s) = fold <$> expandStr s
+expandWrapper (NoQuote s) = fold <$> expandStr s
+expandWrapper (Backtic f) = unwords . fromCommand <$> replace' f
 
 -- | An `if` statement can have an [el]if or [el]se, but it might not.
 replaceIf :: BashIf -> State Namespace [Field]
