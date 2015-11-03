@@ -97,8 +97,8 @@ getIndexedString var idx  = get >>= \ns -> case  M.lookup var ns  of
 
 getIndexedString' :: [BashString] -> String -> State Namespace [String]
 getIndexedString' bstrs ""  = fromBashString <$> (replaceStr $ head bstrs)
-getIndexedString' bstrs "*" = concatMap fromBashString <$> mapM replaceStr bstrs
-getIndexedString' bstrs "@" = concatMap fromBashString <$> mapM replaceStr bstrs
+getIndexedString' bstrs "*" = foldMap fromBashString <$> mapM replaceStr bstrs
+getIndexedString' bstrs "@" = foldMap fromBashString <$> mapM replaceStr bstrs
 getIndexedString' bstrs num = fromBashString <$> (replaceStr $ bstrs !! read num)
 
 expandWrapper :: BashString -> State Namespace String
