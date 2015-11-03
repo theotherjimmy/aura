@@ -84,7 +84,7 @@ expandStr [] = pure []
 expandStr (x:xs) = do
   lhs <- expandStr' x
   rhs <- expandStr xs
-  return $ lhs ++ rhs
+  pure $ lhs ++ rhs
 
 expandStr' :: Either BashExpansion String -> State Namespace [String]
 expandStr' (Right s) = pure [s]
