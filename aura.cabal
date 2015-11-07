@@ -38,6 +38,7 @@ source-repository head
 
 executable aura
   ghc-options:         -Wall
+                       -O2
 
   main-is:             aura.hs
 
@@ -82,7 +83,9 @@ executable aura
                        Aura.Utils.Numbers,
                        Bash.Base,
                        Bash.Parser,
-                       Bash.Simplify
+                       Bash.Simplify,
+                       Srcinfo.Base,
+                       Srcinfo.Parser
 
   build-depends:       aur>=4.0.2,
                        mtl,
@@ -102,4 +105,5 @@ executable aura
                        bytestring,
                        transformers,
                        regex-pcre-builtin,
+                       megaparsec,
                        base >= 4.8 && < 5
