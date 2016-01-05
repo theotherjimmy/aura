@@ -25,7 +25,7 @@ module Aura.Settings.Base ( Settings(..)
 
 import Aura.Languages (Language)
 
-import Prelude hiding (FilePath)
+import BasicPrelude hiding (FilePath)
 import Shelly (FilePath)
 import qualified Data.Text as T
 

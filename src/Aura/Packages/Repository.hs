@@ -32,6 +32,8 @@ import Aura.Pacman     (pacmanOutput)
 
 import Utilities       (findM)
 
+import BasicPrelude
+
 ---
 
 -- | Repository package source.

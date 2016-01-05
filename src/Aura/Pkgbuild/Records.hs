@@ -34,7 +34,7 @@ import qualified Data.Text as T
 import qualified Data.Text.Encoding as E
 
 import Utilities (readFileUTF8, exists)
-import Prelude hiding (FilePath,writeFile)
+import BasicPrelude hiding (FilePath, writeFile, liftIO, (</>))
 import Filesystem
 
 ---

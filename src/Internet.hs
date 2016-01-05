@@ -32,7 +32,7 @@ import           Network.Wreq
 import           Filesystem.Path.CurrentOS (FilePath, filename, (</>), fromText)
 import           Filesystem (openFile, IOMode(WriteMode))
 import           System.IO (hClose)
-import           Prelude hiding (FilePath)
+import           BasicPrelude hiding (FilePath,(</>))
 
 ---
 

@@ -42,6 +42,7 @@ import Control.Eff.Lift
 import Control.Eff.Reader.Strict
 
 import qualified Data.Text as T
+import BasicPrelude hiding (lift,catch,liftIO)
 
 import qualified Shelly as S
 

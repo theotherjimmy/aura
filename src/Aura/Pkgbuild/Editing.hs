@@ -33,13 +33,12 @@ import Aura.Core
 
 import qualified Data.Text.Encoding as E
 
-import Control.Monad (void)
 import Utilities (openEditor, ifte_, ifFile, nothing, readFileUTF8)
 import Aura.Shell     (quietShellCmd, editor)
 import qualified Data.Text as T
 import Filesystem
 import Filesystem.Path.CurrentOS
-import Prelude hiding (FilePath, readFile, writeFile)
+import BasicPrelude hiding (FilePath, readFile, writeFile, liftIO, (</>))
 
 ---
 

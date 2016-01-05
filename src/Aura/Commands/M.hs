@@ -56,8 +56,6 @@ module Aura.Commands.M
     , displayPkgDeps ) where
 
 import Control.Monad
-import Data.Maybe       (catMaybes, fromMaybe)
-import Data.Monoid      ((<>))
 import Data.Foldable    (traverse_)
 import qualified Data.Text as T
 import qualified Data.Text.IO as IO
@@ -76,6 +74,8 @@ import Aura.Core
 
 import Shelly hiding (whenM,liftIO)
 import Utilities (whenM)
+
+import BasicPrelude hiding (liftIO)
 
 ---
 

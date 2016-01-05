@@ -1,4 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
 {-
 
 Copyright 2012, 2013, 2014 Colin Woodbury <colingw@gmail.com>
@@ -22,7 +21,6 @@ along with Aura.  If not, see <http://www.gnu.org/licenses/>.
 
 module Aura.Pkgbuild.Base where
 
-import Control.Monad ((>=>))
 import Data.Monoid
 import qualified Data.Text as T
 
@@ -31,7 +29,7 @@ import Aura.Core
 import Aura.Monad.Aura
 import Aura.Pkgbuild.Editing
 import Filesystem.Path.CurrentOS
-import Prelude hiding (FilePath)
+import BasicPrelude hiding (FilePath, (<.>), (</>), catch, liftIO)
 
 ---
 

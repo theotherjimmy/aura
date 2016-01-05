@@ -40,6 +40,7 @@ import           Aura.Settings.Base
 
 import           Utilities           (whenM, tripleFst)
 
+import           BasicPrelude hiding (liftIO)
 ---
 
 resolveDeps :: Repository -> [Package] -> Aura [Package]

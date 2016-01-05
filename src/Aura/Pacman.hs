@@ -31,7 +31,6 @@ import Control.Applicative (many)
 import Data.Attoparsec.Text
 import qualified Data.HashMap.Strict as M
 import Data.Ini
-import Data.Maybe (fromMaybe)
 import qualified Data.Text as T
 
 import Aura.Cache
@@ -41,7 +40,7 @@ import Aura.Settings.Base (pacmanCmdOf)
 import Aura.Shell         (shellCmd, quietShellCmd, quietShellCmd')
 import Aura.Utils         (scoldAndFail)
 import Shelly hiding (cmd)
-import Prelude hiding (FilePath)
+import BasicPrelude hiding (FilePath)
 
 import Utilities
 
